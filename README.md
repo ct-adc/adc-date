@@ -9,16 +9,24 @@
 从npm安装ct-adc-form
 
 ```
-npm install ct-adc-form
+npm install ct-adc-date
 ```
 在代码中使用
 
 ```
-import form from 'ct-adc-form';
-var DateInput=form.DateInput;
-var DatesInput=form.DatesInput;
+import {DateInput, DatesInput} from 'ct-adc-form';
 Vue.component(DateInput.name,DateInput);
 Vue.component(DatesInput.name,DatesInput);
+
+或
+
+new Vue({
+    el: ...,
+    components: {
+        DateInput,
+        DatesInput
+    }
+})
 ```
 
 ## 参数说明
@@ -117,4 +125,9 @@ jdpicker 1.0.0+
 ### 2.2.0
 
 jdpicker 2.2.0+
+
+
+## 更新日志
+
+[更新日志](https://github.com/ct-adc/adc-date/blob/master/CHANGELOG.md)
 
