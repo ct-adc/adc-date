@@ -50,7 +50,7 @@ endPlaceholder | 结束日期的placeholder | String | '请选择'
 endOps | 结束日期的配置项 | Object | 见备注
 related | 开始结束日期是否要联动 | Boolean | false
 
-**备注:**默认选项
+**备注:** 默认选项
 
 ```
 {
