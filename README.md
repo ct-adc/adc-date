@@ -36,7 +36,7 @@ new Vue({
 参数 | 描述 | 类型 | 默认值
 --- | --- | --- | ---
 initialDate | 开始日期初始值 | String,Number | ''
-ops | 日期的配置项 | Object | {type:'date'...}见备注
+ops | 日期的配置项 | Object | {type:'date'...}详见备注
 
 ### dates参数说明
 
@@ -44,10 +44,10 @@ ops | 日期的配置项 | Object | {type:'date'...}见备注
 --- | --- | --- | ---
 initialBeginDate | 开始日期初始值(可以是符合格式的日期或者时间戳) | String,Number | ''
 beginPlaceholder | 开始日期的placeholder | String | '请选择'
-beginOps | 开始日期的配置项 | Object | {type:'date'...}见备注
+beginOps | 开始日期的配置项 | Object | {type:'date'...}详见备注
 initialEndDate | 结束日期初始值(可以是符合格式的日期或者时间戳) | String,Number | ''
 endPlaceholder | 结束日期的placeholder | String | '请选择'
-endOps | 结束日期的配置项 | Object | {type:'date'...}见备注
+endOps | 结束日期的配置项 | Object | {type:'date'...}详见备注
 related | 开始结束日期是否要联动 | Boolean | false
 
 **备注:** 默认选项
