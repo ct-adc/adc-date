@@ -36,7 +36,7 @@ new Vue({
 参数 | 描述 | 类型 | 默认值
 --- | --- | --- | ---
 initialDate | 开始日期初始值 | String,Number | ''
-ops | 日期的配置项 | Object | 见备注
+ops | 日期的配置项 | Object | {type:'date'...}见备注
 
 ### dates参数说明
 
