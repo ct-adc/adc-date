@@ -17,7 +17,10 @@ new Vue({
         beginDate: +new Date(),
         endDate: +new Date(),
         beginTime: 0,
-        endTime: 0
+        endTime: 0,
+        disabled: false,
+        beginDisabled: false,
+        endDisabled: false
     },
     methods: {
         changeDate(date){
@@ -45,6 +48,15 @@ new Vue({
         setDates(){
             this.beginDate = 1484841600000;
             this.endDate = 1484841600000;
+        },
+        changeDisabled(){
+            this.disabled = !this.disabled;
+        },
+        changeBeginDisabled(){
+            this.beginDisabled = !this.beginDisabled;
+        },
+        changeEndDisabled(){
+            this.endDisabled = !this.endDisabled;
         }
     }
 });

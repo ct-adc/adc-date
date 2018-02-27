@@ -1,6 +1,7 @@
 <template>
     <input type="text"
            class="form-control"
+           :disabled="disabled"
            ref="date">
 </template>
 <script type="es6">
@@ -17,6 +18,10 @@
                 default(){
                     return {}
                 }
+            },
+            disabled: {
+                type: Boolean,
+                default: false
             }
         },
         data(){

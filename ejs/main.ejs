@@ -18,6 +18,7 @@
                   :initial-date="date"
                   :ops="dateOps"
                   placeholder="请选择一个时间"
+                  :disabled="disabled"
                   ref="date"></date>
         </div>
         <div class="col-sm-2">
@@ -30,6 +31,7 @@
                   :initial-date="date"
                   :ops="{type:'datetime',dateFormat: 'yyyy/MM/dd',timeFormat:'hh:mm:ss', clearBtn: false}"
                   placeholder="请选择一个时间"
+                  :disabled="disabled"
                   ref="date"></date>
         </div>
         <div class="col-sm-2">
@@ -40,8 +42,10 @@
         <div class="col-sm-5">
             <dates ref="dates"
                    related
-                   :begin-ops="{type:'datetime',dateMin:'2017-09-11',dateMax:'2017-09-29'}"
-                   :end-ops="{type:'datetime',dateMin:'2017-09-11',dateMax:'2017-09-29'}"
+                   :begin-ops="{type:'datetime',dateMin:'2018-02-11',dateMax:'2018-02-12'}"
+                   :end-ops="{type:'datetime',dateMin:'2018-02-11',dateMax:'2018-02-12'}"
+                   :begin-disabled="beginDisabled"
+                   :end-disabled="endDisabled"
                    begin-placeholder="开始"
                    end-placeholder="结束"></dates>
         </div>
@@ -59,13 +63,20 @@
                    :initial-begin-date="beginDate"
                    :initial-end-date="endDate"
                    begin-placeholder="开始"
-                   end-placeholder="结束" @change="changeDates"></dates>
+                   end-placeholder="结束"
+                   :begin-disabled="beginDisabled"
+                   :end-disabled="endDisabled" @change="changeDates"></dates>
         </div>
         <div class="col-sm-2">
             <button type="button" class="btn btn-sm btn-primary" @click="getDates2">获取时间</button>
         </div>
     </div>
 
+    <div class="mt10">
+        <button type="button" class="btn btn-sm btn-primary" @click="changeDisabled">改变disabled</button>
+        <button type="button" class="btn btn-sm btn-primary" @click="changeBeginDisabled">改变beginDisabled</button>
+        <button type="button" class="btn btn-sm btn-primary" @click="changeEndDisabled">改变endDisabled</button>
+    </div>
 </div>
 <script src="http://static.tcy365.com/cdn/jquery/2.1.0/jquery.js"></script>
 <script src="http://static.tcy365.com/cdn/bootstrap/3.3.5/js/bootstrap.min.js"></script>

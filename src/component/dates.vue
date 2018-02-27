@@ -4,12 +4,14 @@
               :initial-date="beginDate"
               :placeholder="beginPlaceholder"
               :ops="beginOps"
+              :disabled="beginDisabled"
               @change="changeBeginDate"></date>
         <span class="input-group-addon">至</span>
         <date ref="endDate"
               :initial-date="endDate"
               :placeholder="endPlaceholder"
               :ops="endOps"
+              :disabled="endDisabled"
               style="border-radius: 0 4px 4px 0;"
               @change="changeEndDate"></date>
     </div>
@@ -22,6 +24,14 @@
             date: DateInput
         },
         props: {
+            beginDisabled: {
+                type: Boolean,
+                default: false
+            },
+            endDisabled: {
+                type: Boolean,
+                default: false
+            },
             beginPlaceholder: {
                 type: String,
                 default: '开始时间'
