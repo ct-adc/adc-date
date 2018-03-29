@@ -12,7 +12,7 @@
               :placeholder="endPlaceholder"
               :ops="endOps"
               :disabled="endDisabled"
-              style="border-radius: 0 4px 4px 0;"
+              class="end-wrap"
               @change="changeEndDate"></date>
     </div>
 </template>

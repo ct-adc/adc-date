@@ -2,7 +2,7 @@
  * @author rubyisapm
  */
 import Vue from 'vue';
-import {DateInput, DatesInput} from '../../../../index';
+import {DateInput, DatesInput} from '../../../component/index';
 new Vue({
     el: '#app',
     components: {
@@ -33,8 +33,8 @@ new Vue({
             this.endTime = dates.end;
         },
         getDate(){
-            console.log(this.$refs.date.getDate(true));
-            console.log(this.$refs.date.getDate(false));
+            console.log(this.$refs.date1.getDate(true));
+            console.log(this.$refs.date1.getDate(false));
         },
         getDates(){
             console.log(this.$refs.dates.getDates(true));
