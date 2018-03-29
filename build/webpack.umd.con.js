@@ -2,7 +2,7 @@ var path = require('path');
 var webpack = require('webpack');
 module.exports = {
     entry: {
-        index:'./index.js'
+        index:'./src/component/index.js'
     },
     output: {
         path: path.resolve(__dirname, '../lib'),
@@ -33,6 +33,20 @@ module.exports = {
         extensions: ['.js', '.json','.vue','.css'],
         alias: {
             'vue$': 'vue/dist/vue.common.js'
+        }
+    },
+    externals: {
+        'ct-utility': {
+            commonjs: 'ct-utility',
+            commonjs2: 'ct-utility',
+            amd: 'ct-utility',
+            root: 'ct-utility'
+        },
+        'vue': {
+            commonjs: 'vue',
+            commonjs2: 'vue',
+            amd: 'vue',
+            root: 'vue'
         }
     }
 };

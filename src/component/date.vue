@@ -1,22 +1,30 @@
 <template>
-    <input type="text"
-           class="form-control"
-           :disabled="disabled"
-           ref="date">
+    <div class="date-wrap">
+        <input type="text"
+               class="form-control has-feedback"
+               :disabled="disabled"
+               ref="date">
+        <span v-if="!disabled && mixedOps.clearBtn"
+              class="glyphicon glyphicon-remove form-control-feedback text-muted"
+              @click="empty"></span>
+    </div>
 </template>
 <script type="es6">
     import utility from 'ct-utility';
-    export default{
+
+    export default {
         name: 'date',
         props: {
-            initialDate:{
-                type:[String,Number],
-                default:''
+            initialDate: {
+                type: [String, Number],
+                default: ''
             },
             ops: {
                 type: Object,
-                default(){
-                    return {}
+                default() {
+                    return {
+                        clearBtn: true
+                    }
                 }
             },
             disabled: {
@@ -24,21 +32,21 @@
                 default: false
             }
         },
-        data(){
+        data() {
             return {
                 date: ''
             }
         },
-        computed:{
-            mixedOps(){
-                var defaultOps={
-                    type:'date',
-                    dateFormat:'yyyy-MM-dd',
-                    timeFormat:'HH:mm:ss',
-                    timeStart:'00:00:00',
-                    timeBtn:true,
+        computed: {
+            mixedOps() {
+                const defaultOps = {
+                    type: 'date',
+                    dateFormat: 'yyyy-MM-dd',
+                    timeFormat: 'HH:mm:ss',
+                    timeStart: '00:00:00',
+                    timeBtn: true,
                     clearBtn: true,
-                    monthNames:["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"],
+                    monthNames: ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"],
                     shortMonthNames: ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"],
                     shortMonthNames2: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
                     shortDayNames: ["日", "一", "二", "三", "四", "五", "六"],
@@ -52,43 +60,47 @@
                     weekLabel: "周",
                     dateMin: "",
                     dateMax: ""
-
                 };
-                return Object.assign(defaultOps,this.ops);
+
+                return Object.assign(defaultOps, this.ops);
             }
         },
         methods: {
-            getDate(readable){
-                if(readable){
+            getDate(readable) {
+                if (readable) {
                     return this.date;
-                }else{
-                    return this.date==='' ? 0 : +new Date(this.date.replace(/[^\d\:\s]/g,'\/'));
+                } else {
+                    return this.date === '' ? 0 : +new Date(this.date.replace(/[^\d\:\s]/g, '\/'));
                 }
             },
-            initDate(){
-                if (this.initialDate == parseInt(this.initialDate) && this.initialDate!==0) {
+            initDate() {
+                if (this.initialDate === parseInt(this.initialDate) && this.initialDate !== 0) {
                     if (this.mixedOps.type === 'date') {
                         this.date = utility.dateFilter(this.initialDate, this.mixedOps.dateFormat)
                     } else {
-                        this.date = utility.dateFilter(this.initialDate, this.mixedOps.dateFormat + ' '+this.mixedOps.timeFormat);
+                        this.date = utility.dateFilter(this.initialDate, this.mixedOps.dateFormat + ' ' + this.mixedOps.timeFormat);
                     }
-                } else if(this.initialDate!='' && this.initialDate!==0){
+                } else if (this.initialDate !== '' && this.initialDate !== 0) {
                     this.date = this.initialDate;
-                }else{
-                    this.date='';
+                } else {
+                    this.date = '';
                 }
-                this.$refs.date.value=this.date;
+                this.$refs.date.value = this.date;
+            },
+            empty(e) {
+                e.stopPropagation();
+                this.date = '';
+                this.$refs.date.value = this.date;
             }
         },
-        mounted(){
-            var that = this;
-            that.initDate();
-            var ops = {
+        mounted() {
+            const that = this;
+            const ops = {
                 date_format: this.mixedOps.dateFormat,
                 timeShow: this.mixedOps.type === 'date' ? 0 : 1,
                 time_start: this.mixedOps.timeStart,
                 timeBtn: this.mixedOps.timeBtn ? 1 : 0,
-                clearBtn: this.mixedOps.clearBtn ? 1 : 0,
+                clearBtn: 0,
                 month_names: this.mixedOps.monthNames,
                 short_month_names: this.mixedOps.shortMonthNames,
                 short_month_names2: this.mixedOps.shortMonthNames2,
@@ -103,21 +115,46 @@
                 week_label: this.mixedOps.weekLabel,
                 date_min: this.mixedOps.dateMin,
                 date_max: this.mixedOps.dateMax,
-                change(){
-                    var date = that.$refs.date.value;
+                change() {
+                    const date = that.$refs.date.value;
+
                     that.date = date;
-                    that.$emit('change', that.date);
+                    that.$emit('change', date);
                 }
             };
+
+            that.initDate();
             $(this.$refs.date).jdPicker(ops);
-            if (this.date != '') {
+            if (this.date !== '') {
                 this.$refs.date.value = this.date;
             }
         },
-        watch:{
-            initialDate(){
+        watch: {
+            initialDate() {
                 this.initDate();
             }
         }
     }
 </script>
+<style scoped>
+    .date-wrap {
+        position: relative;
+    }
+
+    .end-wrap input {
+        border-radius: 0 4px 4px 0;
+    }
+
+    .form-control-feedback {
+        cursor: pointer;
+        pointer-events: inherit;
+    }
+
+    .has-feedback {
+        padding-right: 25px;
+    }
+
+    .has-feedback::-ms-clear {
+        display: none;
+    }
+</style>

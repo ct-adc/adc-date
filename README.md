@@ -62,7 +62,7 @@ related | 开始结束日期是否要联动 | Boolean | false
     timeFormat:'HH:mm:ss', // 时间格式 如 'hh:mm:ss'为12小时制的时间格式
     timeStart:'00:00:00', // 初始化时间
     timeBtn:true, // 是否显示时间按钮
-    clearBtn: true, // 是否显示清空按钮
+    clearBtn: true, // 是否显示清空图标
     monthNames:["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"],
     shortMonthNames: ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"],
     shortMonthNames2: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
