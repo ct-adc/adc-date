@@ -3,6 +3,7 @@
         <input type="text"
                class="form-control has-feedback"
                :disabled="disabled"
+               :placeholder="placeholder"
                ref="date">
         <span v-if="!disabled && mixedOps.clearBtn"
               class="glyphicon glyphicon-remove form-control-feedback text-muted"
@@ -30,6 +31,10 @@
             disabled: {
                 type: Boolean,
                 default: false
+            },
+            placeholder: {
+                type: String,
+                default: ''
             }
         },
         data() {
