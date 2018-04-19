@@ -6,7 +6,7 @@
 
 ## 使用
 
-从npm安装ct-adc-form
+从npm安装ct-adc-date
 
 ```
 npm install ct-adc-date
@@ -14,7 +14,7 @@ npm install ct-adc-date
 在代码中使用
 
 ```
-import {DateInput, DatesInput} from 'ct-adc-form';
+import {DateInput, DatesInput} from 'ct-adc-date';
 Vue.component(DateInput.name,DateInput);
 Vue.component(DatesInput.name,DatesInput);
 
