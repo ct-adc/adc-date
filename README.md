@@ -88,6 +88,8 @@ related | 开始结束日期是否要联动 | Boolean | false
 
 开始结束日期组件dates的change事件返回一个对象，开始结束日期
 
+当日期被清空时，则返回'';
+
 ### 方法
 
 #### getDate

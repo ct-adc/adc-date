@@ -93,9 +93,15 @@
                 this.$refs.date.value = this.date;
             },
             empty(e) {
+                var date = this.date;
+
                 e.stopPropagation();
                 this.date = '';
                 this.$refs.date.value = this.date;
+
+                if(date !== this.date){
+                    this.$emit('change', this.date);
+                }
             }
         },
         mounted() {

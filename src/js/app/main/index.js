@@ -26,11 +26,12 @@ new Vue({
         changeDate(date){
             console.log(date);
         },
-        changeDates(){
+        changeDates(date){
             var dates = this.$refs.dates.getDates(false);
 
             this.beginTime = dates.begin;
             this.endTime = dates.end;
+            console.log(date);
         },
         getDate(){
             console.log(this.$refs.date1.getDate(true));
