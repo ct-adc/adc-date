@@ -99,7 +99,7 @@
                 this.beginDate = date;
                 var endDate=this.$refs.endDate.getDate(true);
 
-                if (date !== '' && this.related) {
+                if (date !== '' && this.related && !this.endDisabled) {
                     this.interveneDate(date, endDate, true);
                 }
                 this.$nextTick(function() {
@@ -110,7 +110,7 @@
                 this.endDate = date;
                 var beginDate=this.$refs.beginDate.getDate(true);
 
-                if (date !== '' && this.related) {
+                if (date !== '' && this.related && !this.beginDisabled) {
                     this.interveneDate(beginDate, date, false);
                 }
                 this.$nextTick(function() {
