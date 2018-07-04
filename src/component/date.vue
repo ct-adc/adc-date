@@ -15,6 +15,10 @@
 
     export default {
         name: 'date',
+        model: {
+            prop: 'initialDate',
+            event: 'change'
+        },
         props: {
             initialDate: {
                 type: [String, Number],
