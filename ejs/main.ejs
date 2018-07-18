@@ -14,45 +14,44 @@
 <div id="app">
     <div class="row">
         <div class="col-sm-5">
-            <date @change="changeDate"
-                  :initial-date="date"
+            <date v-model="date1"
                   :ops="dateOps"
                   placeholder="请选择一个时间"
                   :disabled="disabled"
                   ref="date1"></date>
         </div>
-        <div class="col-sm-2">
+        <!-- <div class="col-sm-2">
             <button type="button" class="btn btn-sm btn-primary" @click="getDate">获取时间</button>
-        </div>
+        </div> -->
     </div>
     <div class="row mt10">
         <div class="col-sm-5">
-            <date @change="changeDate"
-                  :initial-date="date"
+            <date v-model="date2"
                   :ops="{type:'datetime',dateFormat: 'yyyy/MM/dd',timeFormat:'hh:mm:ss', clearBtn: false}"
                   placeholder="请选择一个时间"
                   :disabled="disabled"
                   ref="date2"></date>
         </div>
-        <div class="col-sm-2">
-            <button type="button" class="btn btn-sm btn-primary" @click="getDate">获取时间</button>
-        </div>
+        <!-- <div class="col-sm-2">
+            <button type="button" class="btn btn-sm btn-primary">获取时间</button>
+        </div> -->
     </div>
     <div class="row mt10">
         <div class="col-sm-5">
-            <dates ref="dates"
+            <dates ref="dates1"
                    related
+                   v-model="dates1"
                    :begin-ops="{type:'datetime',dateMin:'2018-02-11'}"
-                   :end-ops="{type:'datetime',dateMin:'2018-02-11'}"
+                   :end-ops="{type:'datetime',dateMin:'2018-02-11', timeStart: '23:59:59'}"
                    :begin-disabled="beginDisabled"
                    :end-disabled="endDisabled"
                    begin-placeholder="开始"
                    end-placeholder="结束"></dates>
         </div>
-        <div class="col-sm-2">
-            <button type="button" class="btn btn-sm btn-primary" @click="setDates">设置时间</button>
-            <button type="button" class="btn btn-sm btn-primary" @click="getDates">获取时间</button>
-        </div>
+        <!-- <div class="col-sm-2">
+            <button type="button" class="btn btn-sm btn-primary" @click="setDates1">设置时间</button>
+            <button type="button" class="btn btn-sm btn-primary" @click="getDates1">获取时间</button>
+        </div> -->
     </div>
 
 
@@ -60,23 +59,24 @@
         <div class="col-sm-5">
             <dates ref="dates2"
                    related
-                   :initial-begin-date="beginDate"
-                   :initial-end-date="endDate"
+                   v-model="dates2"
+                   :value-readable="true"
+                   :value-end-transfered="true"
                    begin-placeholder="开始"
                    end-placeholder="结束"
                    :begin-disabled="beginDisabled"
-                   :end-disabled="endDisabled" @change="changeDates"></dates>
+                   :end-disabled="endDisabled"></dates>
         </div>
-        <div class="col-sm-2">
+        <!-- <div class="col-sm-2">
             <button type="button" class="btn btn-sm btn-primary" @click="getDates2">获取时间</button>
-        </div>
+        </div> -->
     </div>
 
-    <div class="mt10">
+    <!-- <div class="mt10">
         <button type="button" class="btn btn-sm btn-primary" @click="changeDisabled">改变disabled</button>
         <button type="button" class="btn btn-sm btn-primary" @click="changeBeginDisabled">改变beginDisabled</button>
         <button type="button" class="btn btn-sm btn-primary" @click="changeEndDisabled">改变endDisabled</button>
-    </div>
+    </div> -->
 </div>
 <script src="http://static.tcy365.com/cdn/jquery/2.1.0/jquery.js"></script>
 <script src="http://static.tcy365.com/cdn/bootstrap/3.3.5/js/bootstrap.min.js"></script>
