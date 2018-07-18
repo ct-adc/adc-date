@@ -87,7 +87,7 @@ valueEndTransfered | 当type为date时，结束日期是否需要定位到23:59:
 
 #### change
 
-单一日期组件的date的change事件返回该组件的结果日期，格式为组件选项中的定义格式。
+单一日期组件的date的change事件返回该组件的结果日期，格式由valueReadable和valueEndTransfered决定。
 
 开始结束日期组件dates的change事件返回一个对象，开始结束日期
 
