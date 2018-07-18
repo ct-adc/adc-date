@@ -1,14 +1,14 @@
 <template>
     <div class="input-group">
         <date ref="beginDate"
-              :initial-date="beginDate"
+              v-model="beginDate"
               :placeholder="beginPlaceholder"
               :ops="beginOps"
               :disabled="beginDisabled"
               @change="changeBeginDate"></date>
         <span class="input-group-addon">至</span>
         <date ref="endDate"
-              :initial-date="endDate"
+              v-model="endDate"
               :placeholder="endPlaceholder"
               :ops="endOps"
               :disabled="endDisabled"
@@ -22,6 +22,10 @@
         name: 'dates',
         components: {
             date: DateInput
+        },
+        model: {
+            prop: 'initialDates',
+            event: 'change'
         },
         props: {
             beginDisabled: {
@@ -40,13 +44,14 @@
                 type: String,
                 default: '结束时间'
             },
-            initialBeginDate: {
-                type: [Number, String],
-                default: ''
-            },
-            initialEndDate: {
-                type: [Number, String],
-                default: ''
+            initialDates: {
+                type: Object,
+                default(){
+                    return {
+                        begin: '',
+                        end: ''
+                    };
+                }
             },
             beginOps: {
                 type: Object,
@@ -63,6 +68,14 @@
             related: {
                 type: Boolean,
                 default: true
+            },
+            valueReadable: {
+                type: Boolean,
+                default: false
+            },
+            valueEndTransfered: {
+                type: Boolean,
+                default: true
             }
         },
         data(){
@@ -76,10 +89,10 @@
         },
         methods: {
             initDates(){
-                this.beginDate = this.initialBeginDate === 0 ? '' : this.initialBeginDate;
-                this.endDate = this.initialEndDate === 0 ? '' : this.initialEndDate;
+                this.beginDate = this.initialDates.begin === 0 ? '' : this.initialDates.begin;
+                this.endDate = this.initialDates.end === 0 ? '' : this.initialDates.end;
             },
-            getDates(readable, endTransfered){
+            getDates(readable = this.valueReadable, endTransfered = this.valueEndTransfered){
                 var begin = this.$refs.beginDate.getDate(readable),
                         end = this.$refs.endDate.getDate(readable);
 
@@ -97,24 +110,26 @@
             },
             changeBeginDate(date){
                 this.beginDate = date;
+                var beginDate=this.$refs.beginDate.getDate(true);
                 var endDate=this.$refs.endDate.getDate(true);
 
-                if (date !== '' && this.related && !this.endDisabled) {
-                    this.interveneDate(date, endDate, true);
+                if (beginDate !== '' && this.related && !this.endDisabled) {
+                    this.interveneDate(beginDate, endDate, true);
                 }
                 this.$nextTick(function() {
-                    this.$emit('change', this.getDates(true));
+                    this.$emit('change', this.getDates());
                 })
             },
             changeEndDate(date){
                 this.endDate = date;
+                var endDate = this.$refs.endDate.getDate(true);
                 var beginDate=this.$refs.beginDate.getDate(true);
 
-                if (date !== '' && this.related && !this.beginDisabled) {
-                    this.interveneDate(beginDate, date, false);
+                if (endDate !== '' && this.related && !this.beginDisabled) {
+                    this.interveneDate(beginDate, endDate, false);
                 }
                 this.$nextTick(function() {
-                    this.$emit('change', this.getDates(true));
+                    this.$emit('change', this.getDates());
                 })
             },
             interveneDate(beginDate, endDate, beginRefer){
@@ -150,10 +165,10 @@
             }
         },
         watch: {
-            initialBeginDate(newVal){
+            'initialDates.begin'(newVal){
                 this.beginDate = newVal === 0 ? '' : newVal;
             },
-            initialEndDate(newVal){
+            'initialDates.end'(newVal){
                 this.endDate = newVal === 0 ? '' : newVal;
             }
         }

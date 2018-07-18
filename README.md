@@ -38,20 +38,23 @@ new Vue({
 initialDate | 开始日期初始值 | String,Number | ''
 disabled | 是否将日期控件处于禁用状态 | Boolean | false
 ops | 日期的配置项 | Object | 见备注
+placeholder | placeholder | String | ''
+valueReadable | value值是否可读 可读时为指定格式的值，否则为毫秒时间戳 | Boolean | false 
 
 ### dates参数说明
 
 参数 | 描述 | 类型 | 默认值
 --- | --- | --- | ---
-initialBeginDate | 开始日期初始值(可以是符合格式的日期或者时间戳) | String,Number | ''
+initialDates | 日期初始值(可以是符合格式的日期或者时间戳) | Object{begin: (String,Number), end: (String,Number)} | {begin: '', end: ''}
 beginPlaceholder | 开始日期的placeholder | String | '请选择'
 beginOps | 开始日期的配置项 | Object | 见备注
 beginDisabled | 是否将开始日期控件处于禁用状态 | Boolean | false
-initialEndDate | 结束日期初始值(可以是符合格式的日期或者时间戳) | String,Number | ''
 endPlaceholder | 结束日期的placeholder | String | '请选择'
 endOps | 结束日期的配置项 | Object | 见备注
 endDisabled | 是否将结束日期控件处于禁用状态 | Boolean | false
 related | 开始结束日期是否要联动 | Boolean | false
+valueReadable | value值是否可读 可读时为指定格式的值，否则为毫秒时间戳 | Boolean | false 
+valueEndTransfered | 当type为date时，结束日期是否需要定位到23:59:59:999 | Boolean | true
 
 **备注:** 默认选项
 

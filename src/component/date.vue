@@ -39,6 +39,10 @@
             placeholder: {
                 type: String,
                 default: ''
+            },
+            valueReadable: {
+                type: Boolean,
+                default: false
             }
         },
         data() {
@@ -75,7 +79,7 @@
             }
         },
         methods: {
-            getDate(readable) {
+            getDate(readable = this.valueReadable) {
                 if (readable) {
                     return this.date;
                 } else {
@@ -104,7 +108,7 @@
                 this.$refs.date.value = this.date;
 
                 if(date !== this.date){
-                    this.$emit('change', this.date);
+                    this.$emit('change', this.getDate());
                 }
             }
         },
@@ -134,7 +138,7 @@
                     const date = that.$refs.date.value;
 
                     that.date = date;
-                    that.$emit('change', date);
+                    that.$emit('change', that.getDate(that.valueReadable));
                 }
             };
 
