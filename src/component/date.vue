@@ -161,7 +161,7 @@
     }
 
     .end-wrap input {
-        border-radius: 0 4px 4px 0;
+        border-radius: 0 4px 4px 0!important;
     }
 
     .form-control-feedback {
@@ -176,4 +176,16 @@
     .has-feedback::-ms-clear {
         display: none;
     }
+
+    .form-group-sm .form-control-feedback{
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+    }
+    .form-group-lg .form-control-feedback{
+        width: 46px;
+        height: 46px;
+        line-height: 46px;
+    }
+
 </style>

@@ -1,5 +1,5 @@
 <template>
-    <div class="input-group">
+    <div class="input-group date-input-group">
         <date ref="beginDate"
               v-model="beginDate"
               :placeholder="beginPlaceholder"
@@ -174,3 +174,10 @@
         }
     }
 </script>
+<style scoped>
+.date-input-group .input-group-addon {
+    border-left: 0;
+    border-right: 0;
+}
+</style>
+
