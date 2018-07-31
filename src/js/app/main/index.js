@@ -3,6 +3,7 @@
  */
 import Vue from 'vue';
 import {DateInput, DatesInput} from '../../../component/index';
+
 new Vue({
     el: '#app',
     components: {

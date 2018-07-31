@@ -20,6 +20,20 @@
                   :disabled="disabled"
                   ref="date1"></date>
         </div>
+        <div class="col-sm-5 form-group-lg">
+                <date v-model="date1"
+                      :ops="dateOps"
+                      placeholder="请选择一个时间"
+                      :disabled="disabled"
+                      ref="date1"></date>
+            </div>
+            <div class="col-sm-5 form-group-sm">
+                    <date v-model="date1"
+                          :ops="dateOps"
+                          placeholder="请选择一个时间"
+                          :disabled="disabled"
+                          ref="date1"></date>
+                </div>
         <!-- <div class="col-sm-2">
             <button type="button" class="btn btn-sm btn-primary" @click="getDate">获取时间</button>
         </div> -->
