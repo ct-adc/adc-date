@@ -4,7 +4,7 @@
 
 *todo*
 
-- 修复 当ralated为true，另一个日期是true时, 
+- 修复 当ralated为true时的关联逻辑
 
 ### 2.0.0-alpha.2
 
