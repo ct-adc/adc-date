@@ -56,12 +56,14 @@
                    related
                    v-model="dates1"
                    :begin-ops="{type:'datetime',dateMin:'2018-02-11'}"
-                   :end-ops="{type:'datetime',dateMin:'2018-02-11', timeStart: '23:59:59'}"
+                   :end-ops="{type:'datetime',dateMin:'2018-02-11', timeStart: '13:00:00'}"
                    :begin-disabled="beginDisabled"
                    :end-disabled="endDisabled"
                    begin-placeholder="开始"
                    end-placeholder="结束"></dates>
         </div>
+        <!-- :begin-ops="{type:'datetime',dateMin:'2018-02-11'}"
+                   :end-ops="{type:'datetime',dateMin:'2018-02-11', timeStart: '23:59:59'}" -->
         <!-- <div class="col-sm-2">
             <button type="button" class="btn btn-sm btn-primary" @click="setDates1">设置时间</button>
             <button type="button" class="btn btn-sm btn-primary" @click="getDates1">获取时间</button>

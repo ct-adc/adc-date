@@ -18,6 +18,13 @@
 </template>
 <script type="es6">
     import DateInput from './date';
+    const timeLargerThan = (time1, time2)=>{
+        const time1Number = (time1 + '').replace(/^.*(\d{2}):(\d{2}):(\d{2}).*$/, '$1$2$3') * 1;
+        const time2Number = (time2 + '').replace(/^.*(\d{2}):(\d{2}):(\d{2}).*$/, '$1$2$3') * 1;
+
+        return time1Number > time2Number;
+    };
+
     export default{
         name: 'dates',
         components: {
@@ -145,19 +152,31 @@
                 } else {
                     endTime = +new Date(endDate.replace(/[^\d\:\s]/g,'\/'));
                 }
-                var isSameDay = endTime != 0 && beginTime != 0 && endDate.replace(/^(\d{4})\D(\d{2})\D(\d{2}).*$/,'$1$2$3') === beginDate.replace(/^(\d{4})\D(\d{2})\D(\d{2}).*$/,'$1$2$3');
-                if (beginRefer && (endDate === '' || beginTime > endTime)) {
-                    if (this.beginOps.type === 'datetime' && this.endOps.type === 'datetime' && (endDate === '' || !isSameDay)) {
+                // var isSameDay = endTime != 0 && beginTime != 0 && endDate.replace(/^(\d{4})\D(\d{2})\D(\d{2}).*$/,'$1$2$3') === beginDate.replace(/^(\d{4})\D(\d{2})\D(\d{2}).*$/,'$1$2$3');
+                const beginIsDateTime = this.beginOps.type === 'datetime';
+                const endIsDateTime = this.endOps.type === 'datetime';
+                const endDateInVilid = beginRefer && endDate !== '' && beginTime > endTime;
+                const endDateIsEmpty = beginRefer && endDate === '';
+                const beginDateInVilid = !beginRefer && beginDate !== '' && beginTime > endTime;
+                const beginDateIsEmpty = !beginRefer && beginDate === '';
+
+                if (endDateInVilid || endDateIsEmpty) {
+                    const hasTimeStart = beginIsDateTime && endIsDateTime && typeof this.endOps.timeStart !== 'undefined';
+                    const canUseTimeStart = hasTimeStart && timeLargerThan(this.endOps.timeStart, beginDate);
+
+                    if (canUseTimeStart) {
                         // 置为当天的endOps.timeStart
-                        this.endDate = beginDate.replace(/\d{2}:\d{2}:\d{2}/, this.endOps.timeStart || ' 00:00:00');
+                        this.endDate = beginDate.replace(/\d{2}:\d{2}:\d{2}/, this.endOps.timeStart);
                     } else {
                         this.endDate = beginDate;
                     }
-                }
-                if (!beginRefer && (beginDate === '' || beginTime > endTime)) {
-                    if (this.beginOps.type === 'datetime' && this.endOps.type === 'datetime' && (beginDate === '' || !isSameDay)) {
+                } else if (beginDateInVilid || beginDateIsEmpty) {
+                    const hasTimeStart = beginIsDateTime && endIsDateTime && typeof this.beginOps.timeStart !== 'undefined';
+                    const canUseTimeStart = hasTimeStart && timeLargerThan(endDate, this.beginOps.timeStart);
+
+                    if (canUseTimeStart) {
                         // 置为当天的beginOps.timeStart
-                        this.beginDate = endDate.replace(/\d{2}:\d{2}:\d{2}/, this.beginOps.timeStart || ' 00:00:00');
+                        this.beginDate = endDate.replace(/\d{2}:\d{2}:\d{2}/, this.beginOps.timeStart);
                     } else {
                         this.beginDate = endDate;
                     }

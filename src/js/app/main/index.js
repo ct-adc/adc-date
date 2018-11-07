@@ -17,8 +17,8 @@ new Vue({
             dateFormat: 'yyyy-MM-dd'
         },
         dates1: {
-            begin: +new Date(),
-            end: +new Date()
+            begin: '',
+            end: ''
         },
         dates2: {
             begin: 0,
