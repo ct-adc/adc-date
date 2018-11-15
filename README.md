@@ -54,7 +54,7 @@ endOps | 结束日期的配置项 | Object | {type:'date'...}详见备注
 endDisabled | 是否将结束日期控件处于禁用状态 | Boolean | false
 related | 开始结束日期是否要联动 | Boolean | false
 valueReadable | value值是否可读 可读时为指定格式的值，否则为毫秒时间戳 | Boolean | false 
-valueEndTransfered | 当type为date时，结束日期是否需要定位到23:59:59:999 | Boolean | true
+valueEndTransfered | 当type为date时，结束日期是否需要定位到23:59:59:999; 当type为datetime时是否定位到所选择时间的最后一毫秒，即`所选时间:999`  | Boolean | true
 
 **备注:** 默认选项
 

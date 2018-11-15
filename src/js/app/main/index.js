@@ -29,5 +29,10 @@ new Vue({
         disabled: false,
         beginDisabled: false,
         endDisabled: false
+    },
+    methods: {
+        change(dates){
+            console.log(dates);
+        }
     }
 });

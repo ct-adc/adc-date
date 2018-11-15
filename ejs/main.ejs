@@ -56,11 +56,11 @@
                    related
                    v-model="dates1"
                    :begin-ops="{type:'datetime',dateMin:'2018-02-11'}"
-                   :end-ops="{type:'datetime',dateMin:'2018-02-11', timeStart: '13:00:00'}"
+                   :end-ops="{type:'datetime',dateMin:'2018-02-11', timeStart: '23:59:59'}"
                    :begin-disabled="beginDisabled"
                    :end-disabled="endDisabled"
                    begin-placeholder="开始"
-                   end-placeholder="结束"></dates>
+                   end-placeholder="结束" @change="change"></dates>
         </div>
         <!-- :begin-ops="{type:'datetime',dateMin:'2018-02-11'}"
                    :end-ops="{type:'datetime',dateMin:'2018-02-11', timeStart: '23:59:59'}" -->
